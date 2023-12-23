@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distancia a Otros Planetas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        label {
+            display: block;
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora de Distancia a Otros Planetas</h2>
+
+    <label for="planeta">Selecciona un planeta:</label>
+    <select id="planeta">
+        <option value="mercurio">Mercurio</option>
+        <option value="venus">Venus</option>
+        <option value="tierra">Tierra</option>
+        <option value="marte">Marte</option>
+        <option value="jupiter">Júpiter</option>
+        <option value="saturno">Saturno</option>
+        <option value="urano">Urano</option>
+        <option value="neptuno">Neptuno</option>
+    </select>
+
+    <br>
+
+    <button onclick="calcularDistancia()">Calcular Distancia</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularDistancia() {
+            var distanciaTierra = {
+                mercurio: 57910000,
+                venus: 108200000,
+                tierra: 0, // La distancia de la Tierra a sí misma es 0
+                marte: 225000000,
+                jupiter: 611000000,
+                saturno: 1250000000,
+                urano: 2720000000,
+                neptuno: 4350000000
+            };
+
+            var planetaSeleccionado = document.getElementById('planeta').value;
+            var distancia = distanciaTierra[planetaSeleccionado];
+
+            if (distancia !== undefined) {
+                document.getElementById('resultado').innerHTML = "La distancia de la Tierra a " + planetaSeleccionado.charAt(0).toUpperCase() + planetaSeleccionado.slice(1) + " es aproximadamente " + distancia.toLocaleString() + " kilómetros.";
+            } else {
+                document.getElementById('resultado').innerHTML = "Selecciona un planeta válido.";
+            }
+        }
+    </script>
+</body>
+</html>
